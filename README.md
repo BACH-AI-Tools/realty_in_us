@@ -33,7 +33,7 @@
 这是一个 MCP 服务器，用于访问 Realty In Us API。
 
 - **PyPI 包名**: `bach-realty_in_us`
-- **版本**: 1.0.0
+- **版本**: 2.0.0
 - **传输协议**: stdio
 
 
@@ -1280,4 +1280,4 @@ List properties by MLS ID
 
 此服务器由 [API-to-MCP](https://github.com/BACH-AI-Tools/api-to-mcp) 工具自动生成。
 
-版本: 1.0.0
+版本: 2.0.0
