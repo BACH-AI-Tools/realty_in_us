@@ -1,0 +1,3848 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Realty In Us",
+    "version": "1.0.0",
+    "description": "RapidAPI: apidojo/realty-in-us"
+  },
+  "servers": [
+    {
+      "url": "https://realty-in-us.p.rapidapi.com"
+    }
+  ],
+  "paths": {
+    "/properties/v3/list": {
+      "post": {
+        "summary": "properties/v3/list",
+        "description": "List properties for sale, rent, sold with options and filters",
+        "operationId": "properties/v3/list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/search-location": {
+      "get": {
+        "summary": "agents/v2/search-location",
+        "description": "Search location information",
+        "operationId": "agents/v2/search_location",
+        "parameters": [
+          {
+            "name": "area_types",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : neighborhood|city|county|postal_code|building|street",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "For paging purpose (max 20)",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          },
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "description": "Any term or phrase that you are familiar with. Ex : California",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/get-listings": {
+      "get": {
+        "summary": "agents/get-listings (Deprecated)",
+        "description": "Get agent's listings",
+        "operationId": "agents/get_listings_(deprecated)",
+        "parameters": [
+          {
+            "name": "fulfillment_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of advertiser_id field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": "1633379",
+              "enum": null
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The value of abbreviation field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "agent_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of ...member/id JSON object returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": "77018",
+              "enum": null
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "One of the following : all|forSale|forSold|forRent|openHouses",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "For paging purpose",
+            "schema": {
+              "type": "string",
+              "default": "1",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/get-recommendations": {
+      "get": {
+        "summary": "agents/get-recommendations (Deprecated)",
+        "description": "Get agent's recommendations",
+        "operationId": "agents/get_recommendations_(deprecated)",
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of advertiser_id field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": "1633379",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/get-profile": {
+      "get": {
+        "summary": "agents/get-profile (Deprecated)",
+        "description": "Get agent profile",
+        "operationId": "agents/get_profile_(deprecated)",
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of advertiser_id field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": "1633379",
+              "enum": null
+            }
+          },
+          {
+            "name": "nrds_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of nrds_id field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/list": {
+      "get": {
+        "summary": "agents/list (Deprecated)",
+        "description": "List agents with filters and options",
+        "operationId": "agents/list_(deprecated)",
+        "parameters": [
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": true,
+            "description": "Zip code or postal code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "For paging purpose (max 20)",
+            "schema": {
+              "type": "string",
+              "default": "20",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : recent_activity_high|recently_sold_high|for_sale_count_high|recommendations_count_high|agent_rating_high",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Search for agent or team or company by name",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : agent | team | office",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "agent_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings or leave empty : buyer | seller",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "recommendations_count_min",
+            "in": "query",
+            "required": false,
+            "description": "Number of recommendations (max 10)",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "agent_rating_min",
+            "in": "query",
+            "required": false,
+            "description": "Rating (max 5)",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/get-listings": {
+      "get": {
+        "summary": "agents/v2/get-listings",
+        "description": "Get agent listings",
+        "operationId": "agents/v2/get_listings",
+        "parameters": [
+          {
+            "name": "fulfillment_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of fulfillment_id field returned in .../agents/v2/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/get-recommendations": {
+      "get": {
+        "summary": "agents/v2/get-recommendations",
+        "description": "Get agent recommendations",
+        "operationId": "agents/v2/get_recommendations",
+        "parameters": [
+          {
+            "name": "fulfillment_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of fulfillment_id field returned in .../agents/v2/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/get-reviews": {
+      "get": {
+        "summary": "agents/v2/get-reviews",
+        "description": "Get agent reviews",
+        "operationId": "agents/v2/get_reviews",
+        "parameters": [
+          {
+            "name": "fulfillment_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of fulfillment_id field returned in .../agents/v2/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/get-profile": {
+      "get": {
+        "summary": "agents/v2/get-profile",
+        "description": "Get agent profile",
+        "operationId": "agents/v2/get_profile",
+        "parameters": [
+          {
+            "name": "profile_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of id field returned in .../agents/v2/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "fulfillment_id",
+            "in": "query",
+            "required": false,
+            "description": "The value of fulfillment_id field returned in .../agents/v2/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/v2/list": {
+      "get": {
+        "summary": "agents/v2/list",
+        "description": "List agents with filters and options",
+        "operationId": "agents/v2/list",
+        "parameters": [
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": true,
+            "description": "Zip code or postal code. Either marketing_area_city, name, postal_code is required",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "For paging purpose (max 20)",
+            "schema": {
+              "type": "string",
+              "default": "20",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : RATINGS_REVIEWS|RELEVANT_AGENTS|MOST_SALES|TESTIMONIALS_RECOMMENDATIONS|MOST_RECENT_ACTIVITY",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "description": "Search for agent or team or company by name. Either marketing_area_city, name, postal_code is required",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "agent_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings or leave empty : BUYER|SELLER",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "agent_filter_criteria",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : NRDS_AND_FULFILLMENT_ID_EXISTS|NRDS_ID_EXISTS|FULFILLMENT_ID_EXISTS",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "marketing_area_city",
+            "in": "query",
+            "required": false,
+            "description": "The value of id returned in .../agents/v2/search-location endpoint. Ex : md_california Either marketing_area_city, name, postal_code is required",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "languages",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : spanish|chinese|french|amharic|arabic|aramaic|portuguese|hindi|russian|afrikaans|albanian|asl|armenian|bengali|bosnian|bulgarian|croatian|czech|danish|dutch|english|estonian|farsi|filipino|finnish|gaelic|georgian|german|greek|gujarati|hawaiian|hebrew|hmong|hungarian|indonesian|italian|japanese|khmer|korean|lao|latvian|lithuanian|malay|malayalam|mandarin|nepali|norwegian|pashto|polish|punjabi|romanian|serbian|sindhi|singhalese|slovenian|somali|swahili|swedish|tagalog|taiwa",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/finance/rates": {
+      "get": {
+        "summary": "finance/rates",
+        "description": "Get finance rates",
+        "operationId": "finance/rates",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "required": true,
+            "description": "The postal code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/check-equity-rates": {
+      "get": {
+        "summary": "mortgage/check-equity-rates (Deprecated)",
+        "description": "Check mortgage equity rates",
+        "operationId": "mortgage/check_equity_rates_(deprecated)",
+        "parameters": [
+          {
+            "name": "creditScore",
+            "in": "query",
+            "required": true,
+            "description": "One of the following : excellent|good|fair|poor",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loanProduct",
+            "in": "query",
+            "required": true,
+            "description": "One of the following : HELOC,HELOAN_FIXED_5YEARS,HELOAN_FIXED_10YEARS,HELOAN_FIXED_15YEARS,HELOAN_FIXED_20YEARS,HELOAN_FIXED_30YEARS. Separate by comma for multiple applied values",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loanAmount",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 70000",
+            "schema": {
+              "type": "string",
+              "default": "70000",
+              "enum": null
+            }
+          },
+          {
+            "name": "propertyValue",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 300000",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "mortgageBalance",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 150000",
+            "schema": {
+              "type": "string",
+              "default": "150000",
+              "enum": null
+            }
+          },
+          {
+            "name": "zip",
+            "in": "query",
+            "required": true,
+            "description": "The postal code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "description": "The state code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/calculate": {
+      "get": {
+        "summary": "mortgage/calculate (Deprecated)",
+        "description": "Calculate mortgage",
+        "operationId": "mortgage/calculate_(deprecated)",
+        "parameters": [
+          {
+            "name": "hoi",
+            "in": "query",
+            "required": true,
+            "description": "Home insurance",
+            "schema": {
+              "type": "string",
+              "default": "56",
+              "enum": null
+            }
+          },
+          {
+            "name": "tax_rate",
+            "in": "query",
+            "required": true,
+            "description": "Property tax",
+            "schema": {
+              "type": "string",
+              "default": "1.2485549449920654",
+              "enum": null
+            }
+          },
+          {
+            "name": "downpayment",
+            "in": "query",
+            "required": true,
+            "description": "Down payment",
+            "schema": {
+              "type": "string",
+              "default": "44980",
+              "enum": null
+            }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": true,
+            "description": "Home price",
+            "schema": {
+              "type": "string",
+              "default": "224900",
+              "enum": null
+            }
+          },
+          {
+            "name": "term",
+            "in": "query",
+            "required": true,
+            "description": "Mortgage loan type",
+            "schema": {
+              "type": "string",
+              "default": "30",
+              "enum": null
+            }
+          },
+          {
+            "name": "rate",
+            "in": "query",
+            "required": true,
+            "description": "Interest rate",
+            "schema": {
+              "type": "string",
+              "default": "3.827",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/check-rates": {
+      "get": {
+        "summary": "mortgage/check-rates (Deprecated)",
+        "description": "Check mortgage rates",
+        "operationId": "mortgage/check_rates_(deprecated)",
+        "parameters": [
+          {
+            "name": "creditScore",
+            "in": "query",
+            "required": true,
+            "description": "One of the following : excellent|good|fair|poor",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "points",
+            "in": "query",
+            "required": true,
+            "description": "One of the following : all|zero|zero_to_one|one_to_two",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loanPurpose",
+            "in": "query",
+            "required": true,
+            "description": "purchase|refinance",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loanTypes",
+            "in": "query",
+            "required": true,
+            "description": "One of the following : ALL|30YrFixed|30YrFixed_FHA|30YrFixed_VA|20YrFixed|15YrFixed|10YrFixed|5Arm|7Arm",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loanPercent",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 85.2",
+            "schema": {
+              "type": "string",
+              "default": "85.2",
+              "enum": null
+            }
+          },
+          {
+            "name": "propertyPrice",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 250000",
+            "schema": {
+              "type": "string",
+              "default": "250000",
+              "enum": null
+            }
+          },
+          {
+            "name": "zip",
+            "in": "query",
+            "required": true,
+            "description": "The postal code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/v2/check-rates": {
+      "get": {
+        "summary": "mortgage/v2/check-rates",
+        "description": "Check mortgage rates",
+        "operationId": "mortgage/v2/check_rates",
+        "parameters": [
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": true,
+            "description": "The postal code",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/calculate-affordability": {
+      "get": {
+        "summary": "mortgage/calculate-affordability (Deprecated)",
+        "description": "Calculate affordability",
+        "operationId": "mortgage/calculate_affordability_(deprecated)",
+        "parameters": [
+          {
+            "name": "annual_income",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 250000",
+            "schema": {
+              "type": "string",
+              "default": "250000",
+              "enum": null
+            }
+          },
+          {
+            "name": "debt_to_income_ratio",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 0.43",
+            "schema": {
+              "type": "string",
+              "default": "0.43",
+              "enum": null
+            }
+          },
+          {
+            "name": "down_payment",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 172000",
+            "schema": {
+              "type": "string",
+              "default": "172000",
+              "enum": null
+            }
+          },
+          {
+            "name": "hoa_fees",
+            "in": "query",
+            "required": false,
+            "description": "Example value: 0",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "homeowner_insurance_rate",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 0.012",
+            "schema": {
+              "type": "string",
+              "default": "0.012",
+              "enum": null
+            }
+          },
+          {
+            "name": "interest_rate",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 0.03119",
+            "schema": {
+              "type": "string",
+              "default": "0.03119",
+              "enum": null
+            }
+          },
+          {
+            "name": "is_pmi_included",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "loan_term",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 30",
+            "schema": {
+              "type": "string",
+              "default": "30",
+              "enum": null
+            }
+          },
+          {
+            "name": "monthly_debt",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 1500",
+            "schema": {
+              "type": "string",
+              "default": "1500",
+              "enum": null
+            }
+          },
+          {
+            "name": "tax_rate",
+            "in": "query",
+            "required": true,
+            "description": "Example value: 0.01",
+            "schema": {
+              "type": "string",
+              "default": "0.01",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-for-sale": {
+      "get": {
+        "summary": "properties/v2/list-for-sale (Deprecated)",
+        "description": "List properties for sale",
+        "operationId": "properties/v2/list_for_sale_(deprecated)",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): relevance|newest|price_low|price_high|photos|open_house_date|sqft_high|price_reduced_date",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): single_family,multi_family,condo,mobile,land,farm,other",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_sub_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): condo,cond_op,townhouse,co_op",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "features",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): garage_2_or_more,view,waterfront,golf_course_view,swimming_pool,cul_de_sac,hardwood_floors,basement,fireplace,energy_efficient,disability_features,dining_room,washer_dryer,family_room,den_or_office,game_room,central_air,central_heat,forced_air,single_story,two_or_more_stories,corner_lot,water_view,golf_course_lot_or_frontage,hill_or_mountain_view,ocean_view,city_view,lake_view,river_view,community_security_features,community_swimmin",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties (1 to 20)",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_min",
+            "in": "query",
+            "required": false,
+            "description": "Min age of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_max",
+            "in": "query",
+            "required": false,
+            "description": "Max age of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "baths_min",
+            "in": "query",
+            "required": false,
+            "description": "Min baths of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "beds_min",
+            "in": "query",
+            "required": false,
+            "description": "Min beds of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "is_matterports",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_foreclosure",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "has_open_house",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_new_construction",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_contingent",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_pending",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_new_plan",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-by-mls": {
+      "get": {
+        "summary": "properties/v2/list-by-mls (Deprecated)",
+        "description": "List properties by MLS ID",
+        "operationId": "properties/v2/list_by_mls_(deprecated)",
+        "parameters": [
+          {
+            "name": "mls_id",
+            "in": "query",
+            "required": true,
+            "description": "The MLS ID",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_status",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : for_sale|for_rent|recently_sold",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of items per response",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/detail": {
+      "get": {
+        "summary": "properties/v2/detail (Deprecated)",
+        "description": "Get property detail information",
+        "operationId": "properties/v2/detail_(deprecated)",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/list-for-rent": {
+      "get": {
+        "summary": "properties/list-for-rent (Deprecated)",
+        "description": "List properties for rent",
+        "operationId": "properties/list_for_rent_(deprecated)",
+        "parameters": [
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : completeness,photos,freshest|price_low|price_high|photos|newest",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "baths_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting at least the number of bathrooms",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "beds_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting at least the number of bedrooms",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): apartment,single_family,mapi_condo_townhome,other",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "mapi_community_features",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): community_washer_dryer,community_parking,central_air,community_pool,community_gym",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "listed_date_min",
+            "in": "query",
+            "required": false,
+            "description": "Date string format yyyy-MM-dd'T'HH:mm:ss'Z' , such as : 2019-08-01T16:24:40Z .The date from which the properties have been on realtor.com",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "allows_dogs",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "allows_cats",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "no_pets_allowed",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-for-rent": {
+      "get": {
+        "summary": "properties/v2/list-for-rent (Deprecated)",
+        "description": "List properties for rent",
+        "operationId": "properties/v2/list_for_rent_(deprecated)",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : relevance|newest|price_low|price_high|photos|open_house_date|sqft_high|price_reduced_date",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): single_family,multi_family,condo,mobile,land,farm,other",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_sub_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): condo,cond_op,townhouse,co_op",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "features",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): recreation_facilities,swimming_pool,washer_dryer,garage_1_or_more,central_air,fireplace,spa_or_hot_tub,dishwasher,community_doorman,community_elevator,furnished,laundry_room,community_no_fee,community_outdoor_space,pets_allowed",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties (1 to 20)",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "beds_min",
+            "in": "query",
+            "required": false,
+            "description": "Min beds of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "baths_min",
+            "in": "query",
+            "required": false,
+            "description": "Min baths of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "allows_dogs",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "allows_cats",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/auto-complete": {
+      "get": {
+        "summary": "locations/auto-complete (Deprecated)",
+        "description": "Get auto complete suggestions by city, ward, street name to pass in other endpoints. This endpoint also helps to get a specific property id by its address",
+        "operationId": "locations/auto_complete_(deprecated)",
+        "parameters": [
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "description": "Name of cities, districts, places",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/list-sold": {
+      "get": {
+        "summary": "properties/list-sold (Deprecated)",
+        "description": "List sold properties",
+        "operationId": "properties/list_sold_(deprecated)",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : price_low|price_high",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): single_family, condo, mobile, multi_family, farm, land",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_min",
+            "in": "query",
+            "required": false,
+            "description": "Min age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_max",
+            "in": "query",
+            "required": false,
+            "description": "Max age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/v2/auto-complete": {
+      "get": {
+        "summary": "locations/v2/auto-complete",
+        "description": "Get auto complete suggestions by city, ward, street name to pass in other endpoints. This endpoint also helps to get a specific property id by its address",
+        "operationId": "locations/v2/auto_complete",
+        "parameters": [
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "description": "States, cities, districts, addresses, zipcode. Ex : California Los Angeles 2425 Sahalee Dr W Sammamish, WA",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of items per response, for paging purpose",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mortgage/v2/calculate": {
+      "get": {
+        "summary": "mortgage/v2/calculate",
+        "description": "Calculate mortgage",
+        "operationId": "mortgage/v2/calculate",
+        "parameters": [
+          {
+            "name": "home_insurance",
+            "in": "query",
+            "required": true,
+            "description": "Home insurance",
+            "schema": {
+              "type": "string",
+              "default": "56",
+              "enum": null
+            }
+          },
+          {
+            "name": "property_tax_rate",
+            "in": "query",
+            "required": true,
+            "description": "Property tax",
+            "schema": {
+              "type": "string",
+              "default": "1.2485549449920654",
+              "enum": null
+            }
+          },
+          {
+            "name": "down_payment",
+            "in": "query",
+            "required": true,
+            "description": "Down payment",
+            "schema": {
+              "type": "string",
+              "default": "44980",
+              "enum": null
+            }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": true,
+            "description": "Home price",
+            "schema": {
+              "type": "string",
+              "default": "224900",
+              "enum": null
+            }
+          },
+          {
+            "name": "term",
+            "in": "query",
+            "required": true,
+            "description": "Mortgage loan type",
+            "schema": {
+              "type": "string",
+              "default": "30",
+              "enum": null
+            }
+          },
+          {
+            "name": "rate",
+            "in": "query",
+            "required": true,
+            "description": "Interest rate",
+            "schema": {
+              "type": "string",
+              "default": "3.827",
+              "enum": null
+            }
+          },
+          {
+            "name": "hoa_fees",
+            "in": "query",
+            "required": true,
+            "description": "Home owner association fee",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "apply_veterans_benefits",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schools/detail": {
+      "get": {
+        "summary": "schools/detail",
+        "description": "Get detailed information of a school",
+        "operationId": "schools/detail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The value of schools -> id field returned in .../schools/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schools/list": {
+      "get": {
+        "summary": "schools/list",
+        "description": "List schools with options and filters",
+        "operationId": "schools/list",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of items per response, for paging purpose",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "The offset of records to ignore, for paging purpose",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "Filter schools by state (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": false,
+            "description": "Filter schools by city (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "county",
+            "in": "query",
+            "required": false,
+            "description": "Filter schools by county (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "neighborhood",
+            "in": "query",
+            "required": false,
+            "description": "Filter schools by neighborhood (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Filter schools by postal_code (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "school_district_id",
+            "in": "query",
+            "required": false,
+            "description": "Filter schools by school_district_id (You need to specify at least one of the following : state_code|city|county|neighborhood|postal_code|school_district_id)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "education_level",
+            "in": "query",
+            "required": false,
+            "description": "One of the following : elementary|high|middle|private",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schools/get-school-district": {
+      "get": {
+        "summary": "schools/get-school-district",
+        "description": "Get detailed information of a school district",
+        "operationId": "schools/get_school_district",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The value of districts -> id field returned in .../schools/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/list-for-sale": {
+      "get": {
+        "summary": "properties/list-for-sale (Deprecated)",
+        "description": "List properties for sale",
+        "operationId": "properties/list_for_sale_(deprecated)",
+        "parameters": [
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (relevance | price_low | price_high | photos | newest | open_house_date | sqft_high | price_reduced_date)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): single_family,condo,mobile,multi_family,farm,land",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "listed_date_min",
+            "in": "query",
+            "required": false,
+            "description": "Date string format yyyy-MM-dd'T'HH:mm:ss'Z' , such as : 2019-08-01T16:24:40Z .The date from which the properties have been on realtor.com",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "baths_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting at least the number of bathrooms",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "beds_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting at least the number of bedrooms",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "reduced",
+            "in": "query",
+            "required": false,
+            "description": "true/false - Price reduced only",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "features",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): basement,den_or_office,dining_room,family_room,game_room,washer_dryer,energy_efficient_home,central_air,central_heat,forced_air,carport,garage_1_or_more,garage_2_or_more,garage_3_or_more,rv_or_boat_parking,disability_features,fireplace,hardwood_floors,horse_facilities,spa_or_hot_tub,swimming_pool,tennis_court,single_story,two_or_more_stories,lease_option,pets_allowed,corner_lot,cul_de_sac,golf_course_lot_or_frontage,waterfront,city_",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "age_min",
+            "in": "query",
+            "required": false,
+            "description": "Min age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_max",
+            "in": "query",
+            "required": false,
+            "description": "Max age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "is_foreclosure",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_matterports",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_new_construction",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_pending",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "is_contingent",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v3/detail": {
+      "get": {
+        "summary": "properties/v3/detail",
+        "description": "Get property detail information (include new Home Value feature)",
+        "operationId": "properties/v3/detail",
+        "parameters": [
+          {
+            "name": "listing_id",
+            "in": "query",
+            "required": false,
+            "description": "The value of listing_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v3/get-surroundings": {
+      "get": {
+        "summary": "properties/v3/get-surroundings",
+        "description": "Get surroundings data around  a property",
+        "operationId": "properties/v3/get_surroundings",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "enable_flood",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v3/list-similar-homes": {
+      "get": {
+        "summary": "properties/v3/list-similar-homes",
+        "description": "List similar homes",
+        "operationId": "properties/v3/list_similar_homes",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of items per response, for paging purpose",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "One of the following : for_sale|ready_to_build|for_rent|sold|off_market|other|new_community",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-similar-homes": {
+      "get": {
+        "summary": "properties/v2/list-similar-homes (Deprecated)",
+        "description": "List similar properties for sale * This endpoint is deprecating, the official have changed to use .../properties/v2/list.... endpoints to list similar properties.",
+        "operationId": "properties/v2/list_similar_homes_(deprecated)",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v3/get-photos": {
+      "get": {
+        "summary": "properties/v3/get-photos",
+        "description": "Get photos of a property",
+        "operationId": "properties/v3/get_photos",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/detail": {
+      "get": {
+        "summary": "properties/detail (Deprecated)",
+        "description": "Get property detail information",
+        "operationId": "properties/detail_(deprecated)",
+        "parameters": [
+          {
+            "name": "listing_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of listing_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_status",
+            "in": "query",
+            "required": true,
+            "description": "One of the followings : for_sale|for_rent",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v3/get-commute-time": {
+      "get": {
+        "summary": "properties/v3/get-commute-time",
+        "description": "Get commute time to travel to a location",
+        "operationId": "properties/v3/get_commute_time",
+        "parameters": [
+          {
+            "name": "destination_address",
+            "in": "query",
+            "required": true,
+            "description": "An address, you should use .../locations/v2/auto-complete to get a complete and correct address . Ex : 7830 Poppy Blvd",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/.../list endpoint",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "transportation_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the following : bicycling|driving|transit|walking",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "with_traffic",
+            "in": "query",
+            "required": false,
+            "description": "Example value: ",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-sold": {
+      "get": {
+        "summary": "properties/v2/list-sold (Deprecated)",
+        "description": "List sold properties",
+        "operationId": "properties/v2/list_sold_(deprecated)",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": true,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items to be responded in every request",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The value of city field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "state_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of state_code field responded in locations/auto-complete API (do not use this parameter with postal_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": false,
+            "description": "Zip code or postal code (do not use this parameter with city and state_code)",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : sold_date|beds_high|price_low|price_high|lot_sqft_high",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_type",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings (separated by comma for multiple values): single_family,multi_family,condo,mobile,land,farm,other",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "description": "Radius in miles to look for properties (1 to 20)",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "baths_min",
+            "in": "query",
+            "required": false,
+            "description": "Min baths of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "beds_min",
+            "in": "query",
+            "required": false,
+            "description": "Min beds of properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_min",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting min price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "price_max",
+            "in": "query",
+            "required": false,
+            "description": "Option filter by setting max price",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lot_sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max Lot/Acreage size",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_min",
+            "in": "query",
+            "required": false,
+            "description": "Min age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "age_max",
+            "in": "query",
+            "required": false,
+            "description": "Max age of home",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "required": false,
+            "description": "Min size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "required": false,
+            "description": "Max size of the properties",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min latitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_max",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the max longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "lng_min",
+            "in": "query",
+            "required": false,
+            "description": "Look for properties in bounding box, this is the min longitude of the coordinate. Has no affect if postal_code, or city or state_code parameter has value.",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/get-reviews": {
+      "get": {
+        "summary": "agents/get-reviews (Deprecated)",
+        "description": "Get agent reviews",
+        "operationId": "agents/get_reviews_(deprecated)",
+        "parameters": [
+          {
+            "name": "advertiser_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of advertiser_id field returned in .../agents/list endpoint",
+            "schema": {
+              "type": "string",
+              "default": "1633379",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schools/list-nearby": {
+      "get": {
+        "summary": "schools/list-nearby (Deprecated)",
+        "description": "List schools that are near the property",
+        "operationId": "schools/list_nearby_(deprecated)",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "query",
+            "required": true,
+            "description": "The longitude co-ordinate",
+            "schema": {
+              "type": "string",
+              "default": "-117.937021",
+              "enum": null
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "description": "The latitude co-ordinate",
+            "schema": {
+              "type": "string",
+              "default": "35.129431",
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/v2/list-similar-rental-homes": {
+      "get": {
+        "summary": "properties/v2/list-similar-rental-homes (Deprecated)",
+        "description": "List similar properties for rent * This endpoint is deprecating, the official have changed to use .../properties/v2/list.... endpoints to list similar properties.",
+        "operationId": "properties/v2/list_similar_rental_homes_(deprecated)",
+        "parameters": [
+          {
+            "name": "postal_code",
+            "in": "query",
+            "required": true,
+            "description": "The value of postal_code field returned in all list endpoints",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/list-similarities": {
+      "get": {
+        "summary": "properties/list-similarities (Deprecated)",
+        "description": "List similar properties",
+        "operationId": "properties/list_similarities_(deprecated)",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "query",
+            "required": true,
+            "description": "The value of property_id field returned in .../properties/list-.... or .../properties/v2/list-... endpoints.",
+            "schema": {
+              "type": "string",
+              "default": "3109292331",
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "description": "The number of items responded",
+            "schema": {
+              "type": "string",
+              "default": "10",
+              "enum": null
+            }
+          },
+          {
+            "name": "prop_status",
+            "in": "query",
+            "required": true,
+            "description": "One of the followings : for_sale|for_rent",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/list-by-mls": {
+      "get": {
+        "summary": "properties/list-by-mls (Deprecated)",
+        "description": "List properties by MLS ID",
+        "operationId": "properties/list_by_mls_(deprecated)",
+        "parameters": [
+          {
+            "name": "mls_id",
+            "in": "query",
+            "required": true,
+            "description": "The MLS ID",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "The number of items per response",
+            "schema": {
+              "type": "string",
+              "default": "200",
+              "enum": null
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "The offset of items to be ignored in response for paging",
+            "schema": {
+              "type": "string",
+              "default": "0",
+              "enum": null
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "One of the followings : price_low|price_high|photos|newest|open_house_date",
+            "schema": {
+              "type": "string",
+              "default": null,
+              "enum": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-RapidAPI-Key"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiAuth": []
+    }
+  ]
+}

@@ -30,7 +30,7 @@
 
 ## 簡介
 
-這是一個使用 [FastMCP](https://fastmcp.wiki) 自動生成的 MCP 伺服器，用於存取 Realty In Us API。
+這是一個 MCP 伺服器，用於存取 Realty In Us API。
 
 - **PyPI 套件名**: `bach-realty_in_us`
 - **版本**: 1.0.0
@@ -107,8 +107,8 @@ export API_KEY="your_api_key_here"
 {
   "mcpServers": {
     "realty_in_us": {
-      "command": "python",
-      "args": ["E:\path\to\realty_in_us\server.py"],
+      "command": "uvx",
+      "args": ["--from", "bach-realty_in_us", "bach_realty_in_us"],
       "env": {
         "API_KEY": "your_api_key_here"
       }
@@ -1273,7 +1273,6 @@ List properties by MLS ID
 
 ## 技术栈
 
-- **FastMCP**: 快速、Pythonic 的 MCP 服务器框架
 - **传输协议**: stdio
 - **HTTP 客户端**: httpx
 

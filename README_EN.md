@@ -30,7 +30,7 @@ Visit **[EMCP Platform](https://sit-emcp.kaleido.guru)** now to start your MCP j
 
 ## Introduction
 
-This is an automatically generated MCP server using [FastMCP](https://fastmcp.wiki) for accessing the Realty In Us API.
+This is an MCP server for accessing the Realty In Us API.
 
 - **PyPI Package**: `bach-realty_in_us`
 - **Version**: 1.0.0
@@ -107,8 +107,8 @@ export API_KEY="your_api_key_here"
 {
   "mcpServers": {
     "realty_in_us": {
-      "command": "python",
-      "args": ["E:\path\to\realty_in_us\server.py"],
+      "command": "uvx",
+      "args": ["--from", "bach-realty_in_us", "bach_realty_in_us"],
       "env": {
         "API_KEY": "your_api_key_here"
       }
